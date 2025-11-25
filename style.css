@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* body{
@@ -10,11 +14,14 @@
 
 .left{
     width: 25vw;
-    padding: 34px;
+    padding: 10px;
 }
 
 .right{
     width: 75vw;
+}
+
+.home{
 }
 
 .home ul li{
@@ -22,4 +29,21 @@
     gap: 20px;
     width: 15px;
     list-style: none;
+    margin-top: 14;
+    font-weight: bold;
+}
+
+.heading{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-top: 14;
+    font-weight: bold;
+    align-items: center;
+    padding: 24px 14px;
+    font-size: 13px;
+}
+
+.heading img{
+    width: 30px;
 }

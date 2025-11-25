@@ -4,7 +4,7 @@
 }
 
 .flex{
-    display: flex;;
+    display: flex;
 }
 
 .justify-center{
@@ -28,6 +28,14 @@
     background-color: #121212;
 }
 
-.radius{
+.raunded{
     border-radius: 10px;
+}
+
+.m-1{
+    margin: 5px;
+}
+
+.p-1{
+    padding: 10px;
 }
