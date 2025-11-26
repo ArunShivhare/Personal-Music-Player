@@ -7,10 +7,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
-/* body{
+body{
     background-color: black;
     color: white;
-} */
+}
 
 .left{
     width: 25vw;
@@ -19,9 +19,6 @@
 
 .right{
     width: 75vw;
-}
-
-.home{
 }
 
 .home ul li{
@@ -46,4 +43,40 @@
 
 .heading img{
     width: 30px;
+}
+
+.library{
+    min-height: 80vh;
+    position: relative;
+}
+
+.footer{
+    display: flex;
+    font-size: 10px;
+    gap: 13px;
+    color: gray;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer a{
+    color: grey;
+}
+
+.right{
+    margin: 16px 0;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(34, 34, 34);
+}
+
+.header > *{
+    padding: 20px;
+}
+
+.spotify-playlists{
+    padding: 16px;
 }
