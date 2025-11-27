@@ -23,6 +23,7 @@ async function main() {
     let songs = await getsongs()
     console.log(songs)
 
+    //show all the song in the play list
     let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     for (const song of songs) {
         songul.innerHTML = songul.innerHTML + `<li><img class="invert" src="music.svg" alt="">
