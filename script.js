@@ -100,6 +100,16 @@ async function main() {
         currsong.currentTime = (currsong.duration * percent) / 100;
     })
 
+    // Add event listener for hamburger
+    document.querySelector(".hamburger").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "0"
+    })
+
+    // Add event listener for close button
+    document.querySelector(".close").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "-120%"
+    })
+
 
 }
 
