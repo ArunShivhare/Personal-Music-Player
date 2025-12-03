@@ -12,6 +12,10 @@ body {
     color: white;
 }
 
+.close{
+    display: none;
+}
+
 .left {
     width: 25vw;
     padding: 10px;
@@ -80,6 +84,10 @@ body {
 }
 
 .spotify-playlists {
+    padding: 16px;
+}
+
+.spotify-playlists h1 {
     padding: 16px;
 }
 
@@ -281,12 +289,12 @@ body {
     }
 
     .playbar {
-        font-size: small;
-        width: calc(100vw - 60px);
+        /* font-size: small; */
+        width: calc(100vw - 75px);
     }
 
     .seekbar {
-        width: calc(100vw - 70px);
+        width: calc(100vw - 120px);
     }
 
     .right {
@@ -297,12 +305,27 @@ body {
         display: block;
     }
 
+    .right{
+        margin: 0;
+    }
+
     .card {
         width: 90vw;
     }
 
     .cardContainer {
         justify-content: center;
+        margin: 0;
+    }
+
+    .close{
+        display: block;
+    }
+
+    .actionvar{
+        flex-direction: column;
+        gap: 23px;
+        align-items: center;
     }
 
     /* .playbar{
