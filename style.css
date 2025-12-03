@@ -88,7 +88,7 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 70vh;
 }
 
@@ -159,7 +159,7 @@ body {
     font-size: 17px;
 }
 
-.playbar{
+.playbar {
     position: fixed;
     bottom: 30px;
     width: 90%;
@@ -168,27 +168,27 @@ body {
     border-radius: 10px;
     padding: 12px;
     width: 70vw;
-    height: 40px;
+    min-height: 40px;
 }
 
-.songbuttons{
+.songbuttons {
     display: flex;
     justify-content: center;
     gap: 16px;
     cursor: pointer;
 }
 
-.songlist{
+.songlist {
     height: 544px;
     overflow: auto;
     margin-bottom: 44px;
 }
 
-.songlist ul{
+.songlist ul {
     padding: 0 12px;
 }
 
-.songlist ul li{
+.songlist ul li {
     list-style-type: decimal;
     display: flex;
     justify-content: space-between;
@@ -201,24 +201,24 @@ body {
     padding: 12px;
 }
 
-.songlist .info{
+.songlist .info {
     font-size: 12p;
     width: 344px;
 }
 
-.playnow{
+.playnow {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.playnow span{
+.playnow span {
     font-size: 15px;
     width: 65px;
     padding: 12px;
 }
 
-.seekbar{
+.seekbar {
     height: 4px;
     width: 98%;
     background: black;
@@ -229,7 +229,7 @@ body {
     cursor: pointer;
 }
 
-.circle{
+.circle {
     height: 13px;
     width: 13px;
     border-radius: 13px;
@@ -240,31 +240,72 @@ body {
     transition: left 0.5s;
 }
 
-.songinfo , .songtime{
+.songinfo,
+.songtime {
     color: black;
     padding: 0 12px;
 }
 
-.actionvar{
+.actionvar {
     display: flex;
     justify-content: space-between;
+    margin: 20px 0;
+}
+
+.hamburger {
+    display: none;
+}
+
+.hamburgerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
 }
 
 @media (max-width: 1400px) {
-    .left{
-        border: 2px solid red;
+    .left {
         position: absolute;
-        left: -100%;
+        left: -120%;
         transition: all 1s;
         z-index: 1;
-        width: 233px;
+        width: 370px;
+        background-color: black;
     }
 
-    .right{
+    .close {
+        position: absolute;
+        width: 30px;
+        top: 30px;
+        right: 30px;
+    }
+
+    .playbar {
+        font-size: small;
+        width: calc(100vw - 60px);
+    }
+
+    .seekbar {
+        width: calc(100vw - 70px);
+    }
+
+    .right {
         width: 100vw;
     }
 
-    .playbar{
-        width: 95vw;
+    .hamburger {
+        display: block;
     }
+
+    .card {
+        width: 90vw;
+    }
+
+    .cardContainer {
+        justify-content: center;
+    }
+
+    /* .playbar{
+        width: 95vw;
+    } */
 }
