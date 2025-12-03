@@ -70,7 +70,7 @@ async function main() {
     // attach a event listener to each song
     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", element => {
-            console.log(e.querySelector(".info").firstElementChild.innerHTML)
+            // console.log(e.querySelector(".info").firstElementChild.innerHTML)
             playmusic(e.querySelector(".info").firstElementChild.innerHTML.trim())//trim for remone space
         })
     })
@@ -89,7 +89,7 @@ async function main() {
 
     // Listen for time updation event
     currsong.addEventListener("timeupdate", ()=>{
-        console.log(currsong.currentTime, currsong.duration)
+        // console.log(currsong.currentTime, currsong.duration)
         document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currsong.currentTime)}/${secondsToMinutesSeconds(currsong.duration)}`
         document.querySelector(".circle").style.left = (currsong.currentTime/currsong.duration) * 100 + "%";
     })
@@ -113,7 +113,8 @@ async function main() {
 
     // add event listener for previous song
     prev.addEventListener("click", ()=>{
-        console.log("prev clicked")
+        // console.log("prev clicked")
+        currsong.pause()
         let index = songs.indexOf(currsong.src.split("/").slice(-1)[0])
         if((index-1) >= 0){
             playmusic(songs[index-1])
@@ -122,11 +123,18 @@ async function main() {
 
     // add event listener for next song
     next.addEventListener("click", ()=>{
-        console.log("next clicked")
+        // console.log("next clicked")
+        currsong.pause()
         let index = songs.indexOf(currsong.src.split("/").slice(-1)[0])
-        if((index+1) > length){
+        if((index+1) < songs.length){
             playmusic(songs[index+1])
         }
+    })
+
+    // add event for volume
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>{
+        // console.log("setting volume : ", e.target.value, " / 100")
+        currsong.volume = parseInt(e.target.value)/100
     })
 
 
