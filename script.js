@@ -90,7 +90,10 @@ async function displayAlbums() {
     div.innerHTML = response
     let anchors = div.getElementsByTagName("a")
     let cardContainer = document.querySelector(".cardContainer")
-    Array.from(anchors).forEach(async e => {
+    let array = Array.from(anchors)
+    for (let index = 0; index < array.length; index++) {
+        const e = array[index];
+
         if (e.href.includes("songs")) {
             // console.log(e.href.split("/").slice(-2))
             let decoded = decodeURIComponent(e.href);
@@ -103,7 +106,7 @@ async function displayAlbums() {
             let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`)
             let response = await a.json()
             console.log(response)
-            cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="oldsong" class="card">
+            cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="${folder}" class="card">
                         <div class="play">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -116,6 +119,13 @@ async function displayAlbums() {
                         <p>${response.discription}</p>
                     </div>`
         }
+    }
+
+    // load playlist when card is clicked
+    Array.from(document.getElementsByClassName("card")).forEach(e => {
+        e.addEventListener("click", async item => {
+            songs = await getsongs(`songs/${item.currentTarget.dataset.folder}`)
+        })
     })
 }
 
@@ -192,11 +202,18 @@ async function main() {
         currsong.volume = parseInt(e.target.value) / 100
     })
 
-    // load playlist when card is clicked
-    Array.from(document.getElementsByClassName("card")).forEach(e => {
-        e.addEventListener("click", async item => {
-            songs = await getsongs(`songs/${item.currentTarget.dataset.folder}`)
-        })
+    // add event for mute song
+    document.querySelector(".volume>img").addEventListener("click", e=>{
+        if(e.target.src.includes("volume.svg")){
+            e.target.src = e.target.src.replace("volume.svg","mute.svg")
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
+            currsong.volume = 0;
+        }
+        else{
+            e.target.src = e.target.src.replace("mute.svg","volume.svg")
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
+            currsong.volume = .1;
+        }
     })
 
 
