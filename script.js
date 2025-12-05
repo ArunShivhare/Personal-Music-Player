@@ -114,7 +114,7 @@ async function displayAlbums() {
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <img height="200px" widht="200px" src="/songs/${folder}/cover.jpg" alt="">
+                        <img src="/songs/${folder}/cover.jpg" alt="">
                         <h2>${response.title}</h2>
                         <p>${response.discription}</p>
                     </div>`
@@ -202,6 +202,9 @@ async function main() {
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         // console.log("setting volume : ", e.target.value, " / 100")
         currsong.volume = parseInt(e.target.value) / 100
+        if(currsong.volume > 0){
+            document.querySelector(".volume>img").src = e.target.src = document.querySelector(".volume>img").src.replace("icons/mute.svg","icons/volume.svg")
+        }
     })
 
     // add event for mute song
