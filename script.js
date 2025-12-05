@@ -49,14 +49,14 @@ async function getsongs(folder) {
     let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     songul.innerHTML = ""
     for (const song of songs) {
-        songul.innerHTML = songul.innerHTML + `<li><img class="invert" src="music.svg" alt="">
+        songul.innerHTML = songul.innerHTML + `<li><img class="invert" src="icons/music.svg" alt="">
                             <div class="info">
                                 <div>${song.replaceAll("%20", " ")}</div>
                                 <div>Arun</div>
                             </div>
                             <div class="playnow">
                                 <span>Play Now</span>
-                                <img class="invert" src="play.svg" alt="">
+                                <img class="invert" src="icons/play.svg" alt="">
                             </div>
                             </li>`;
     }
@@ -77,7 +77,7 @@ const playmusic = (track, pause = false) => {
     currsong.src = `/${currfolder}/` + track
     if (!pause) {
         currsong.play()
-        play.src = "pause.svg"
+        play.src = "icons/pause.svg"
     }
     document.querySelector(".songinfo").innerHTML = decodeURI(track)
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
@@ -114,7 +114,7 @@ async function displayAlbums() {
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <img src="/songs/${folder}/cover.jpg" alt="">
+                        <img height="200px" widht="200px" src="/songs/${folder}/cover.jpg" alt="">
                         <h2>${response.title}</h2>
                         <p>${response.discription}</p>
                     </div>`
@@ -125,6 +125,8 @@ async function displayAlbums() {
     Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
             songs = await getsongs(`songs/${item.currentTarget.dataset.folder}`)
+            // if you want to play first music when clicked the card
+            // playmusic(songs[0])
         })
     })
 }
@@ -142,11 +144,11 @@ async function main() {
     play.addEventListener("click", () => {
         if (currsong.paused) {
             currsong.play()
-            play.src = "pause.svg"
+            play.src = "icons/pause.svg"
         }
         else {
             currsong.pause()
-            play.src = "play.svg"
+            play.src = "icons/play.svg"
         }
     })
 
@@ -205,12 +207,12 @@ async function main() {
     // add event for mute song
     document.querySelector(".volume>img").addEventListener("click", e=>{
         if(e.target.src.includes("volume.svg")){
-            e.target.src = e.target.src.replace("volume.svg","mute.svg")
+            e.target.src = e.target.src.replace("icons/volume.svg","icons/mute.svg")
             document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
             currsong.volume = 0;
         }
         else{
-            e.target.src = e.target.src.replace("mute.svg","volume.svg")
+            e.target.src = e.target.src.replace("icons/mute.svg","icons/volume.svg")
             document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
             currsong.volume = .1;
         }
