@@ -1,1 +1,1 @@
-# soulFull - Personal Music Player
+# SoulFull - Personal Music Player
